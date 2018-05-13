@@ -1,0 +1,119 @@
+﻿<Window x:Class="Ager.net.GamePlay"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Ager.net"
+        mc:Ignorable="d"
+        Title="GamePlay" Height="450" Width="800"
+        WindowState="Maximized"
+        WindowStyle="None"
+        KeyDown="Window_KeyDown"
+        Mouse.MouseMove="Window_MouseMove">
+    
+    <Canvas Name="GamePlayCanvas" Background="White">
+        <!--hình nhân vật-->
+        <Ellipse Name="PlayerImg" Fill="Aqua"/>
+        <!--hình AI-->
+        <Ellipse Name="AI0Img"/>
+        <Ellipse Name="AI1Img"/>
+        <Ellipse Name="AI2Img"/>
+        <Ellipse Name="AI3Img"/>
+        <!--check đường AI-->
+        <Rectangle Name="AIchec1" Height="50" Width="50"/>
+        <Rectangle Name="AIchec2" Height="50" Width="50"/>
+        <Rectangle Name="AIchec3" Height="50" Width="50"/>
+        <!--hình food-->
+        <Ellipse Name = "Food0" />
+        <Ellipse Name = "Food1" />
+        <Ellipse Name = "Food2" />
+        <Ellipse Name = "Food3" />
+        <Ellipse Name = "Food4" />
+        <Ellipse Name = "Food5" />
+        <Ellipse Name = "Food6" />
+        <Ellipse Name = "Food7" />
+        <Ellipse Name = "Food8" />
+        <Ellipse Name = "Food9" />
+        <Ellipse Name = "Food10" />
+        <Ellipse Name = "Food11" />
+        <Ellipse Name = "Food12" />
+        <Ellipse Name = "Food13" />
+        <Ellipse Name = "Food14" />
+        <Ellipse Name = "Food15" />
+        <Ellipse Name = "Food16" />
+        <Ellipse Name = "Food17" />
+        <Ellipse Name = "Food18" />
+        <Ellipse Name = "Food19" />
+        <Ellipse Name = "Food20" />
+        <Ellipse Name = "Food21" />
+        <Ellipse Name = "Food22" />
+        <Ellipse Name = "Food23" />
+        <Ellipse Name = "Food24" />
+        <Ellipse Name = "Food25" />
+        <Ellipse Name = "Food26" />
+        <Ellipse Name = "Food27" />
+        <Ellipse Name = "Food28" />
+        <Ellipse Name = "Food29" />
+        <Ellipse Name = "Food30" />
+        <Ellipse Name = "Food31" />
+        <Ellipse Name = "Food32" />
+        <Ellipse Name = "Food33" />
+        <Ellipse Name = "Food34" />
+        <Ellipse Name = "Food35" />
+        <Ellipse Name = "Food36" />
+        <Ellipse Name = "Food37" />
+        <Ellipse Name = "Food38" />
+        <Ellipse Name = "Food39" />
+        <Ellipse Name = "Food40" />
+        <Ellipse Name = "Food41" />
+        <Ellipse Name = "Food42" />
+        <Ellipse Name = "Food43" />
+        <Ellipse Name = "Food44" />
+        <Ellipse Name = "Food45" />
+        <Ellipse Name = "Food46" />
+        <Ellipse Name = "Food47" />
+        <Ellipse Name = "Food48" />
+        <Ellipse Name = "Food49" />
+        <Ellipse Name = "Food50" />
+        <Ellipse Name = "Food51" />
+        <Ellipse Name = "Food52" />
+        <Ellipse Name = "Food53" />
+        <Ellipse Name = "Food54" />
+        <Ellipse Name = "Food55" />
+        <Ellipse Name = "Food56" />
+        <Ellipse Name = "Food57" />
+        <Ellipse Name = "Food58" />
+        <Ellipse Name = "Food59" />
+        <Ellipse Name = "Food60" />
+        <Ellipse Name = "Food61" />
+        <Ellipse Name = "Food62" />
+        <Ellipse Name = "Food63" />
+        <Ellipse Name = "Food64" />
+        <Ellipse Name = "Food65" />
+        <Ellipse Name = "Food66" />
+        <Ellipse Name = "Food67" />
+        <Ellipse Name = "Food68" />
+        <Ellipse Name = "Food69" />
+        <Ellipse Name = "Food70" />
+        <Ellipse Name = "Food71" />
+        <Ellipse Name = "Food72" />
+        <Ellipse Name = "Food73" />
+        <Ellipse Name = "Food74" />
+        <Ellipse Name = "Food75" />
+        <Ellipse Name = "Food76" />
+        <Ellipse Name = "Food77" />
+        <Ellipse Name = "Food78" />
+        <Ellipse Name = "Food79" />
+        <Ellipse Name = "Food80" />
+        <Ellipse Name = "Food81" />
+        <Ellipse Name = "Food82" />
+        <Ellipse Name = "Food83" />
+        <Ellipse Name = "Food84" />
+        <Ellipse Name = "Food85" />
+        <Ellipse Name = "Food86" />
+        <Ellipse Name = "Food87" />
+        <Ellipse Name = "Food88" />
+        <Ellipse Name = "Food89" />
+        <Ellipse Name = "Food90" />
+    </Canvas>
+</Window>
