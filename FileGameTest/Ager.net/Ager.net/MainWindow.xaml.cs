@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 
+
 namespace Ager.net
 {
     public partial class MainWindow : Window
@@ -21,6 +22,24 @@ namespace Ager.net
         public MainWindow()
         {
             InitializeComponent();
+
+            //System.Media.SoundPlayer m = new System.Media.SoundPlayer(@"C:\Users\pc\Desktop\Other\piano.mp3");
+            //m.Play();
+
+
+  
+            Music.LoadedBehavior = MediaState.Manual;
+            
+            //Music.MediaFailed += (o, args) =>
+            //{
+            //    MessageBox.Show("Media Failed!!");
+            //};
+
+            Music.Source = new Uri(@"C:\Users\pc\Desktop\Other\piano.mp3");
+            Music.Play();
+            Music.Volume = 100;
+
+
         }
         //nút thoát
         private void btnQuit_Click(object sender, RoutedEventArgs e)
@@ -36,7 +55,7 @@ namespace Ager.net
         //nút setting
         private void btnSetting_Click(object sender, RoutedEventArgs e)
         {
-
+          
         }
     }
 }

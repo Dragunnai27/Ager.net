@@ -72,9 +72,15 @@
                   Margin="0 220 0 0"
                   Style="{StaticResource Start2P}">
             <StackPanel>
+<<<<<<< HEAD
+                <Label Margin="5">- Just play it !</Label>
+                <MediaElement Name="Music"
+                              Height="50"/>
+=======
                 <Label Margin="5">- Eat food and Get fat !</Label>
                 <Label Margin="5">- Eat enemies !</Label>
                 <Label Margin="5">- Stay Alive !</Label>
+>>>>>>> 54891712d094cc250054311e6c1fec6e677be773
             </StackPanel>
         </GroupBox>
     </Grid>

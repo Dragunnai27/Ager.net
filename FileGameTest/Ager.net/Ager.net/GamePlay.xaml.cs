@@ -125,7 +125,29 @@ namespace Ager.net
             };
             gameTime.Start();
         }
+<<<<<<< HEAD
+
+        // Sự kiện bấm phím
+        private void Window_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Escape)
+            {
+                gameTime.Stop();
+                Pause ps = new Pause();
+                ps.ShowDialog();
                 
+            }
+        }
+        // Sự kiện di chuyển chuột
+        private void Window_MouseMove(object sender, MouseEventArgs e)
+        {
+            Point position = e.GetPosition(this);
+            mouseX = position.X;
+            mouseY = position.Y;
+        }
+=======
+                
+>>>>>>> 54891712d094cc250054311e6c1fec6e677be773
         // Hàm di chuyển nhân vật
         public void PlayerMove()
         {
