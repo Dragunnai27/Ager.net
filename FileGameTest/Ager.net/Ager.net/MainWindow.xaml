@@ -72,7 +72,9 @@
                   Margin="0 220 0 0"
                   Style="{StaticResource Start2P}">
             <StackPanel>
-                <Label Margin="5">- Just play it !</Label>
+                <Label Margin="5">- Eat food and Get fat !</Label>
+                <Label Margin="5">- Eat enemies !</Label>
+                <Label Margin="5">- Stay Alive !</Label>
             </StackPanel>
         </GroupBox>
     </Grid>

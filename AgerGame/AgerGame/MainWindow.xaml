@@ -5,10 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AgerGame"
         xmlns:views="clr-namespace:AgerGame.Views"
+        xmlns:viewModel ="clr-namespace:AgerGame.ViewModel"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800"
         WindowState="Maximized" WindowStyle="None">
-    <Grid>
-        <views:GameMenu x:Name="gameMenu"/>
+    <Grid x:Name="grMain">
     </Grid>
 </Window>

@@ -16,7 +16,7 @@ using System.Windows.Shapes;
 namespace Ager.net
 {
     // class chức năng 
-    class Function
+    public static class Function
     {
         // hàm kiểm tra va chạm
         static public bool Collision(Rect r1, Rect r2)
@@ -31,11 +31,13 @@ namespace Ager.net
             double r2_Top = r2.Top;
             double r2_Bottom = r2.Bottom;
 
-            if (r1_Right > r2_Left &&
-                r1_Left < r2_Right &&
-                r1_Bottom > r2_Top &&
-                r1_Top < r2_Bottom) return true;
-            else return false;
+            //if (r1_Right > r2_Left &&
+            //    r1_Left < r2_Right &&
+            //    r1_Bottom > r2_Top &&
+            //    r1_Top < r2_Bottom) return true;
+            //else return false;
+
+            return r1_Right > r2_Left && r1_Left < r2_Right && r1_Bottom > r2_Top && r1_Top < r2_Bottom ? true : false;
         }
         // tạo Rect check va chạm
         static public Rect CreateRect(double x, double y, double m, double n)

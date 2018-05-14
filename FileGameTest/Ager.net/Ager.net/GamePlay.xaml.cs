@@ -61,9 +61,33 @@ namespace Ager.net
             // lấy kích cỡ của màn hình
             if (this.WindowState == WindowState.Maximized)
             {
-                WindowWidth = (double)System.Windows.SystemParameters.PrimaryScreenWidth;
-                WindowHeight = (double)System.Windows.SystemParameters.PrimaryScreenHeight;
+                WindowWidth = System.Windows.SystemParameters.PrimaryScreenWidth;
+                WindowHeight = System.Windows.SystemParameters.PrimaryScreenHeight;
             }
+
+            //check keydown
+            gameWindow.KeyDown += (sender, e) =>
+            {
+                if (e.Key == Key.Escape)
+                {
+                    Close();
+                }
+
+                //if (e.Key == Key.Space)
+                //{
+                //    player.PSpeed += 1;
+                //}
+            };
+
+            // Sự kiện di chuyển chuột
+            gameWindow.MouseMove += (sender, e) =>
+            {
+                //Point position = e.GetPosition(this);
+                // lấy luôn thông tin từ MouseEventArgs
+                mouseX = e.GetPosition(GamePlayCanvas).X;
+                mouseY = e.GetPosition(GamePlayCanvas).Y;
+            };
+
             // đổi hình chuột
             this.Cursor = Cursors.Cross;
             // Hàm tạo nhân vật (Bên dưới)
@@ -101,22 +125,7 @@ namespace Ager.net
             };
             gameTime.Start();
         }
-
-        // Sự kiện bấm phím
-        private void Window_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.Key == Key.Escape)
-            {
-                Close();
-            }
-        }
-        // Sự kiện di chuyển chuột
-        private void Window_MouseMove(object sender, MouseEventArgs e)
-        {
-            Point position = e.GetPosition(this);
-            mouseX = position.X;
-            mouseY = position.Y;
-        }
+                
         // Hàm di chuyển nhân vật
         public void PlayerMove()
         {
@@ -152,6 +161,7 @@ namespace Ager.net
         // Hàm di chuyển AI
         public void AIMove()
         {
+            //theo người chơi
             if (ai0.Alive != false)
             {
                 if (ai0.AX + AI0Img.ActualWidth / 2 < player.PX + PlayerImg.ActualWidth) ai0.AX += ai0.ASpeed;
@@ -282,7 +292,8 @@ namespace Ager.net
                                            Food61,Food62, Food63, Food64, Food65, Food66, Food67, Food68, Food69, Food70,
                                            Food71,Food72, Food73, Food74, Food75, Food76, Food77, Food78, Food79, Food80,
                                            Food81,Food82, Food83, Food84, Food85, Food86, Food87, Food88, Food89, Food90,};
-            for (int i = 0; i < foodsImg.Count; i++)
+            //91 == foodsImg.Count
+            for (int i = 0; i < 91; i++)
             {
                 food = new Food();
                 foods.Add(food);
@@ -315,7 +326,8 @@ namespace Ager.net
         public void FoodSetRect()
         {
             foodsRect = new List<Rect>();
-            for (int i = 0; i < foodsImg.Count; i++)
+            //91 == foodsImg.Count
+            for (int i = 0; i < 91; i++)
             {
                 foods[i].FRectX = Canvas.GetLeft(foodsImg[i]);
                 foods[i].FRectY = Canvas.GetTop(foodsImg[i]);
@@ -339,12 +351,17 @@ namespace Ager.net
                     Canvas.SetTop(foodsImg[i], foods[i].FY);
 
                     PlayerImg.Width = PlayerImg.Height = player.PlayerWidthAndHeight += 1;
-                    if (player.PSpeed != 0.01)
+                    if (player.PSpeed < 0.01)
+                    {
+                        player.PSpeed = 0.01;
+                    }
+                    else
                     {
                         player.PSpeed -= 0.01;
                     }
                 }
-            }
+               
+            }           
         }
         // Hàm va chạm AI với đồ ăn
         public void FoodCollisionAI()
@@ -409,8 +426,6 @@ namespace Ager.net
                         ai3.ASpeed -= 0.01;
                     }
                 }
-
-
             }
         }
         // Hàm tạo Rect cho người chơi và AI

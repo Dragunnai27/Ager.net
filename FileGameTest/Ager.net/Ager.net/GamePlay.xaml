@@ -1,4 +1,5 @@
 ﻿<Window x:Class="Ager.net.GamePlay"
+        x:Name="gameWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -7,9 +8,7 @@
         mc:Ignorable="d"
         Title="GamePlay" Height="450" Width="800"
         WindowState="Maximized"
-        WindowStyle="None"
-        KeyDown="Window_KeyDown"
-        Mouse.MouseMove="Window_MouseMove">
+        WindowStyle="None">
     
     <Canvas Name="GamePlayCanvas" Background="White">
         <!--hình nhân vật-->

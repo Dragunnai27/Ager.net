@@ -27,7 +27,8 @@ namespace Ager.net
         public AI()
         {
             aiWidthAndHeight = 20;
-            aSpeed = 1.95;
+            //aSpeed = 1.95;
+            aSpeed = 2;
             Alive = true;
         }
     }
