@@ -1,51 +1,37 @@
-﻿using System;
-using System.Windows;
-using System.Windows.Input;
+﻿using AgerGame.Model;
+using AgerGame.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using AgerGame.Views;
-using AgerGame.Model;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Windows.Threading;
-using System.Windows.Controls;
-using AgerGame.ViewModel;
-using System.Windows.Media;
-
-namespace AgerGame.ViewModel
-{
-    public sealed class GamePlayViewModel
-    {
-        // logical handle for game play
-       
-        public GamePlay Game { get; set; }
-        public GamePlayViewModel()
-        {
-            Game = new GamePlay(Ultil.CreatePlayer())
-            {
-                Visibility = Visibility.Hidden
-            };
-        }        
-    }
-
-}
 
 namespace AgerGame.Views
 {
-    public partial class GamePlay : UserControl
+    /// <summary>
+    /// Interaction logic for GamePlayWindow.xaml
+    /// </summary>
+    /// 
+    public partial class GamePlayWindow : Window
     {
-        // logical handle for game play
-
         // player + Bot
         Player[] players;
         // Rect của player + AI
         List<Rect> PAIRect;
-        
+
         int rf1;
         int rf2;
         int rf3;
-        
+
         // list hình foods và RectFoods;
         Food[] foods;
         //List<Ellipse> foodsImg;
@@ -62,44 +48,60 @@ namespace AgerGame.Views
         double WindowWidth = Ultil.WindowWidth;
         double WindowHeight = Ultil.WindowHeight;
 
-        public GamePlay(Player p)
+        //Pause Control
+        GamePauseViewModel gamePauseVM;
+        public GamePlayWindow()
         {
             InitializeComponent();
+        }
+
+        public GamePlayWindow(Player p)
+        {
+            InitializeComponent();
+            gamePauseVM = new GamePauseViewModel(this);                                 
+            GamePlayCanvas.Children.Add(gamePauseVM.gamePause);
             players = new Player[5];
             players[0] = p;
             foods = Ultil.CreateFoods();
-            CreateAI();            
+            CreateAI();
             //bo vao mang add
-            GamePlayCanvas.Children.Add(players[0].PlayerImg);            
+            GamePlayCanvas.Children.Add(players[0].PlayerImg);
             GamePlayCanvas.Children.Add(players[1].PlayerImg);
-            GamePlayCanvas.Children.Add(players[2].PlayerImg);            
-            GamePlayCanvas.Children.Add(players[3].PlayerImg);            
+            GamePlayCanvas.Children.Add(players[2].PlayerImg);
+            GamePlayCanvas.Children.Add(players[3].PlayerImg);
             GamePlayCanvas.Children.Add(players[4].PlayerImg);
             AddFood();
             FoodStartRandom();
             AIPosStartRandom();
             SetGameTime();
 
-            this.GamePlayCanvas.MouseMove += (sender, e) =>
+            GameWindow.MouseMove += (sender, e) =>
             {
-                mouseX = e.GetPosition(GamePlayCanvas).X;
-                mouseY = e.GetPosition(GamePlayCanvas).Y;
+                mouseX = e.GetPosition(GameWindow).X;
+                mouseY = e.GetPosition(GameWindow).Y;
             };
 
-            GamePlayCanvas.PreviewKeyDown += (sender, e) =>
+            GameWindow.KeyDown += (sender, e) =>
             {
-                if (e.Key == Key.A)
+                if (e.Key == Key.Escape)
                 {
-                    MessageBox.Show("A");
+                    gameTime.Stop();
+                    gamePauseVM.gamePause.Visibility = Visibility.Visible;
                 }
-            };
+                if (e.Key == Key.Space)
+                {
+                    gamePauseVM.gamePause.Visibility = Visibility.Hidden;
+                    gameTime.Start();
+                }
+            };            
+            gameTime.Start();
         }
         
         private void SetGameTime()
         {
             gameTime = new DispatcherTimer
             {
-                Interval = TimeSpan.FromMilliseconds(1)
+                Interval = TimeSpan.FromTicks(50000)
             };
             gameTime.Tick += (sender, e) =>
             {
@@ -107,17 +109,17 @@ namespace AgerGame.Views
                 PlayerMove();
                 SetPlayerAIRect();
                 FoodSetRect();
-                FoodCollisionPlayerAI();               
+                FoodCollisionPlayerAI();
                 PlayerCollisionAI();
             };
         }
         // Player di chuyển
         public void PlayerMove()
         {
-            if (players[0].PosX + players[0].PlayerImg.Width / 2 < mouseX) players[0].PosX += players[0].Speed;
-            if (players[0].PosX + players[0].PlayerImg.Height / 2 > mouseX) players[0].PosX -= players[0].Speed;
-            if (players[0].PosY + players[0].PlayerImg.Width / 2 < mouseY) players[0].PosY += players[0].Speed;
-            if (players[0].PosY + players[0].PlayerImg.Height / 2 > mouseY) players[0].PosY -= players[0].Speed;
+            if (players[0].PosX + players[0].PlayerImg.ActualWidth / 2 < mouseX) players[0].PosX += players[0].Speed;
+            if (players[0].PosX + players[0].PlayerImg.ActualHeight / 2 > mouseX) players[0].PosX -= players[0].Speed;
+            if (players[0].PosY + players[0].PlayerImg.ActualWidth / 2 < mouseY) players[0].PosY += players[0].Speed;
+            if (players[0].PosY + players[0].PlayerImg.ActualHeight / 2 > mouseY) players[0].PosY -= players[0].Speed;
 
             Canvas.SetLeft(players[0].PlayerImg, players[0].PosX);
             Canvas.SetTop(players[0].PlayerImg, players[0].PosY);
@@ -125,9 +127,9 @@ namespace AgerGame.Views
         // Create Bots
         public void CreateAI()
         {
-            players[1] = new Bot();            
+            players[1] = new Bot();
             Canvas.SetLeft(players[1].PlayerImg, 0); players[1].PosX = Canvas.GetLeft(players[1].PlayerImg);
-            Canvas.SetTop(players[1].PlayerImg, 0); players[1].PosY = Canvas.GetTop(players[1].PlayerImg);            
+            Canvas.SetTop(players[1].PlayerImg, 0); players[1].PosY = Canvas.GetTop(players[1].PlayerImg);
 
             players[2] = new Bot();
 
@@ -188,7 +190,7 @@ namespace AgerGame.Views
             // bot 3
             if (((Bot)players[3]).IsAlive)
             {
-                if (players[3].WidthAndHeight % 2 == 0)
+                if (players[3].WidthAndHeight > 30)
                 {
                     if (players[3].PosX + players[3].PlayerImg.ActualWidth / 2 < players[0].PosX + players[0].PlayerImg.ActualWidth / 2) players[3].PosX += players[3].Speed;
                     if (players[3].PosX + players[3].PlayerImg.ActualWidth / 2 > players[0].PosX + players[0].PlayerImg.ActualWidth / 2) players[3].PosX -= players[3].Speed;
@@ -211,7 +213,7 @@ namespace AgerGame.Views
             // bot 4
             if (((Bot)players[4]).IsAlive)
             {
-                if (players[4].WidthAndHeight % 2 != 0)
+                if (players[4].WidthAndHeight > players[0].WidthAndHeight)
                 {
                     if (players[4].PosX + players[4].PlayerImg.ActualWidth / 2 < players[0].PosX + players[0].PlayerImg.ActualWidth / 2) players[4].PosX += players[4].Speed;
                     if (players[4].PosX + players[4].PlayerImg.ActualWidth / 2 > players[0].PosX + players[0].PlayerImg.ActualWidth / 2) players[4].PosX -= players[4].Speed;
@@ -257,8 +259,8 @@ namespace AgerGame.Views
         public void AIPosStartRandom()
         {
             Random randomFood = new Random();
-            rf1 = randomFood.Next(0,maxValue : 90);
-            rf2 = randomFood.Next(0,maxValue : 90);
+            rf1 = randomFood.Next(0, maxValue: 90);
+            rf2 = randomFood.Next(0, maxValue: 90);
             rf3 = randomFood.Next(0, maxValue: 90);
         }
 
@@ -295,10 +297,10 @@ namespace AgerGame.Views
                         Canvas.SetTop(foods[j].Img, foods[j].PosY);
 
                         players[i].PlayerImg.Width = players[i].PlayerImg.Height = players[i].WidthAndHeight += 1;
-                        players[i].Speed = players[i].Speed < 0.01 ? 0.01 : players[i].Speed - 0.01;                        
+                        players[i].Speed = players[i].Speed < 0.01 ? 0.01 : players[i].Speed - 0.01;
                     }
                 }
-            }   
+            }
         }
 
         //Players rect
@@ -314,7 +316,7 @@ namespace AgerGame.Views
                 tHeight = p.PlayerImg.ActualHeight;
                 Rect rect = Ultil.CreateRect(rectX, rectY, tWidth, tHeight);
                 PAIRect.Add(rect);
-            }            
+            }
         }
         public void PlayerCollisionAI()
         {
@@ -323,7 +325,7 @@ namespace AgerGame.Views
             {
                 if (players[1].WidthAndHeight >= players[0].WidthAndHeight)
                 {
-                    GamePlayCanvas.Visibility = Visibility.Hidden;
+                    Close();                    
                 }
                 else
                 {
@@ -341,7 +343,7 @@ namespace AgerGame.Views
             {
                 if (players[2].WidthAndHeight >= players[0].WidthAndHeight)
                 {
-                    GamePlayCanvas.Visibility = Visibility.Hidden;
+                    Close();
                 }
                 else
                 {
@@ -358,7 +360,7 @@ namespace AgerGame.Views
             {
                 if (players[3].WidthAndHeight >= players[0].WidthAndHeight)
                 {
-                    GamePlayCanvas.Visibility = Visibility.Hidden;
+                    Close();
                 }
                 else
                 {
@@ -375,7 +377,7 @@ namespace AgerGame.Views
             {
                 if (players[4].WidthAndHeight >= players[0].WidthAndHeight)
                 {
-                    GamePlayCanvas.Visibility = Visibility.Hidden;
+                    Close();
                 }
                 else
                 {
@@ -387,6 +389,5 @@ namespace AgerGame.Views
                 }
             }
         }
-
     }
 }

@@ -59,7 +59,6 @@
     <Compile Include="Model\Player.cs" />
     <Compile Include="ViewModel\GameMenuViewModel.cs" />
     <Compile Include="ViewModel\GamePauseViewModel.cs" />
-    <Compile Include="ViewModel\GamePlayViewModel.cs" />
     <Compile Include="ViewModel\Ultil.cs" />
     <Compile Include="Views\GameMenu.xaml.cs">
       <DependentUpon>GameMenu.xaml</DependentUpon>
@@ -67,8 +66,8 @@
     <Compile Include="Views\GamePause.xaml.cs">
       <DependentUpon>GamePause.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\GamePlay.xaml.cs">
-      <DependentUpon>GamePlay.xaml</DependentUpon>
+    <Compile Include="Views\GamePlayWindow.xaml.cs">
+      <DependentUpon>GamePlayWindow.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -90,7 +89,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\GamePlay.xaml">
+    <Page Include="Views\GamePlayWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -61,8 +61,8 @@ namespace Ager.net
             // lấy kích cỡ của màn hình
             if (this.WindowState == WindowState.Maximized)
             {
-                WindowWidth = System.Windows.SystemParameters.PrimaryScreenWidth;
-                WindowHeight = System.Windows.SystemParameters.PrimaryScreenHeight;
+                WindowWidth = SystemParameters.PrimaryScreenWidth;
+                WindowHeight = SystemParameters.PrimaryScreenHeight;
             }
 
             //check keydown

@@ -1,6 +1,7 @@
 ﻿
 using System.Windows;
 using AgerGame.ViewModel;
+using AgerGame.Views;
 
 namespace AgerGame
 {
@@ -9,22 +10,17 @@ namespace AgerGame
     /// </summary>
     public partial class MainWindow : Window
     {
-        GameMenuViewModel gmVM;
-        GamePlayViewModel gpVM;
+        GameMenuViewModel gameMenuVM;
+        GamePauseViewModel gamePauseVM;
+        GamePlayWindow gamePlayWindow;
         public MainWindow()
         {
             InitializeComponent();
-            gpVM = new GamePlayViewModel();
-            gmVM = new GameMenuViewModel(gpVM);
-            grMain.Children.Add(gmVM.gm);
-            grMain.Children.Add(gpVM.Game);
-            GameWindow.KeyDown += (sender, e) =>
-            {
-                if (e.Key == System.Windows.Input.Key.C)
-                {
-                    MessageBox.Show("C");
-                }
-            };
+            gamePlayWindow = new GamePlayWindow(Ultil.CreatePlayer());
+            gameMenuVM = new GameMenuViewModel(gamePlayWindow);
+            gamePauseVM = new GamePauseViewModel(gamePlayWindow);
+            grMain.Children.Add(gamePauseVM.gamePause);
+            grMain.Children.Add(gameMenuVM.gameMenu);
         }
     }
 }

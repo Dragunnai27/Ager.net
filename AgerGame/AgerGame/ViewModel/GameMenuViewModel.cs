@@ -7,32 +7,32 @@ using System.Text;
 using System.Threading.Tasks;
 using AgerGame.Views;
 using static System.Net.Mime.MediaTypeNames;
+using AgerGame.ViewModel;
 
 namespace AgerGame.ViewModel
 {
     public class GameMenuViewModel
     {
-        public GameMenu gm;
-        public GamePlayViewModel gamePlayVM;
-        public GamePauseViewModel gamePauseVM;
-        public GameMenuViewModel(GamePlayViewModel gpVM)
+        public GameMenu gameMenu;
+        public GamePlayWindow gamePlayWindow;
+        public GameMenuViewModel(GamePlayWindow gpwd)
         {
-            gm = new GameMenu
+            gameMenu = new GameMenu
             {
                 Visibility = Visibility.Visible
-            };
-            gamePlayVM = gpVM;
-            gm.btnQuit.Click += (sender, e) =>
+            };            
+            gameMenu.btnQuit.Click += (sender, e) =>
             {
                 App.Current.Shutdown();
             };
-            gm.btnPlay.Click += (sender, e) =>
+            gameMenu.btnPlay.Click += (sender, e) =>
             {
-                gm.Visibility = Visibility.Hidden;
-                gpVM.Game.Visibility = Visibility.Visible;
-                gpVM.Game.gameTime.Start();
+                //gamePlayWindow = gpwd;
+                gamePlayWindow = new GamePlayWindow(Ultil.CreatePlayer());
+                gamePlayWindow.ShowDialog();
             };
         }
     }
 
 }
+
