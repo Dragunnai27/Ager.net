@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows;
+using System.Windows.Input;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,6 +14,7 @@ namespace AgerGame.ViewModel
     {
         public GameMenu gm;
         public GamePlayViewModel gamePlayVM;
+        public GamePauseViewModel gamePauseVM;
         public GameMenuViewModel(GamePlayViewModel gpVM)
         {
             gm = new GameMenu

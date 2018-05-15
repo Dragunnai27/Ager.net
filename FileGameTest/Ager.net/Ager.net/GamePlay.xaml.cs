@@ -125,7 +125,6 @@ namespace Ager.net
             };
             gameTime.Start();
         }
-<<<<<<< HEAD
 
         // Sự kiện bấm phím
         private void Window_KeyDown(object sender, KeyEventArgs e)
@@ -145,9 +144,7 @@ namespace Ager.net
             mouseX = position.X;
             mouseY = position.Y;
         }
-=======
                 
->>>>>>> 54891712d094cc250054311e6c1fec6e677be773
         // Hàm di chuyển nhân vật
         public void PlayerMove()
         {

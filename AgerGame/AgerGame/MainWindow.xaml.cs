@@ -18,6 +18,13 @@ namespace AgerGame
             gmVM = new GameMenuViewModel(gpVM);
             grMain.Children.Add(gmVM.gm);
             grMain.Children.Add(gpVM.Game);
+            GameWindow.KeyDown += (sender, e) =>
+            {
+                if (e.Key == System.Windows.Input.Key.C)
+                {
+                    MessageBox.Show("C");
+                }
+            };
         }
     }
 }

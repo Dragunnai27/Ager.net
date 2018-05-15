@@ -58,10 +58,14 @@
     <Compile Include="Model\Food.cs" />
     <Compile Include="Model\Player.cs" />
     <Compile Include="ViewModel\GameMenuViewModel.cs" />
+    <Compile Include="ViewModel\GamePauseViewModel.cs" />
     <Compile Include="ViewModel\GamePlayViewModel.cs" />
     <Compile Include="ViewModel\Ultil.cs" />
     <Compile Include="Views\GameMenu.xaml.cs">
       <DependentUpon>GameMenu.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\GamePause.xaml.cs">
+      <DependentUpon>GamePause.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\GamePlay.xaml.cs">
       <DependentUpon>GamePlay.xaml</DependentUpon>
@@ -79,6 +83,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Views\GameMenu.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\GamePause.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

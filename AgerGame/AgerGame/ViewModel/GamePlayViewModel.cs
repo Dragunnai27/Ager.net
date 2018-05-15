@@ -71,7 +71,7 @@ namespace AgerGame.Views
             CreateAI();            
             //bo vao mang add
             GamePlayCanvas.Children.Add(players[0].PlayerImg);            
-            GamePlayCanvas.Children.Add(players[1].PlayerImg);            
+            GamePlayCanvas.Children.Add(players[1].PlayerImg);
             GamePlayCanvas.Children.Add(players[2].PlayerImg);            
             GamePlayCanvas.Children.Add(players[3].PlayerImg);            
             GamePlayCanvas.Children.Add(players[4].PlayerImg);
@@ -86,14 +86,13 @@ namespace AgerGame.Views
                 mouseY = e.GetPosition(GamePlayCanvas).Y;
             };
 
-            GamePlayCanvas.KeyUp += (sender, e) =>
+            GamePlayCanvas.PreviewKeyDown += (sender, e) =>
             {
                 if (e.Key == Key.A)
                 {
-                    gameTime.Stop();
+                    MessageBox.Show("A");
                 }
             };
-            
         }
         
         private void SetGameTime()
@@ -106,7 +105,6 @@ namespace AgerGame.Views
             {
                 AIMove();
                 PlayerMove();
-                // Hàm tạo Rect cho đồ ăn (Bên dưới)
                 SetPlayerAIRect();
                 FoodSetRect();
                 FoodCollisionPlayerAI();               
