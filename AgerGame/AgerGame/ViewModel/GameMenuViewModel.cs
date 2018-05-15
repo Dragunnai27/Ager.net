@@ -15,7 +15,7 @@ namespace AgerGame.ViewModel
 {
     public class GameMenuViewModel
     {
-        private bool IsPlaying = false;
+        private bool IsPlaying = true;
         public GameMenu gameMenu;
         public GamePlayWindow gamePlayWindow;
         MediaPlayer mp3 = new MediaPlayer();
@@ -26,6 +26,7 @@ namespace AgerGame.ViewModel
                 Visibility = Visibility.Visible
             };
             mp3.Open(new Uri(@"unity.MP3", UriKind.RelativeOrAbsolute));
+            mp3.Play();
             gameMenu.btnQuit.Click += (sender, e) =>
             {
                 App.Current.Shutdown();
@@ -33,20 +34,23 @@ namespace AgerGame.ViewModel
             gameMenu.btnPlay.Click += (sender, e) =>
             {
                 gamePlayWindow = new GamePlayWindow(Ultil.CreatePlayer());
+                gamePlayWindow.t1 = DateTime.Now;
                 gamePlayWindow.ShowDialog();
             };
-            gameMenu.btnSetting.Click += (sender, e) =>
+            gameMenu.btnMusic.Click += (sender, e) =>
             {
                 if (!IsPlaying)
                 {
                     mp3.Play();
                     IsPlaying = true;
-                    return;
+                    gameMenu.btnMusic.Content = "Music on";
+                 
                 }
                 else
                 {
                     mp3.Pause();
                     IsPlaying = false;
+                    gameMenu.btnMusic.Content = "Music off";
                 }
             };
         }
