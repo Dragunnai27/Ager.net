@@ -122,7 +122,9 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="Resource\Music\unity.MP3" />
+  </ItemGroup>
   <ItemGroup>
     <Resource Include="Resource\Image\AI.png" />
     <Resource Include="Resource\Image\pinkgrid.jpg" />
