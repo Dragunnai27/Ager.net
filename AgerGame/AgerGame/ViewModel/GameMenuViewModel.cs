@@ -25,7 +25,7 @@ namespace AgerGame.ViewModel
             {
                 Visibility = Visibility.Visible
             };
-            mp3.Open(new Uri(@"unity.MP3", UriKind.RelativeOrAbsolute));
+            mp3.Open(new Uri(@"Bgm.mp3", UriKind.RelativeOrAbsolute));
             mp3.Play();
             gameMenu.btnQuit.Click += (sender, e) =>
             {

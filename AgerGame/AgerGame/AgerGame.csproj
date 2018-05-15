@@ -133,11 +133,13 @@
     <Resource Include="Resource\Image\AI1.png" />
     <Resource Include="Resource\Image\AI2.png" />
     <Resource Include="Resource\Image\AI3.png" />
-    <Content Include="Resource\Music\unity.MP3" />
+    <Resource Include="Resource\Image\Bg.jpg" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resource\Image\AI.png" />
-    <Resource Include="Resource\Image\pinkgrid.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\gameBg.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

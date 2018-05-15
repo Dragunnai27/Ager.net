@@ -64,13 +64,16 @@ namespace AgerGame.Views
         public GamePlayWindow(Player p)
         {
             InitializeComponent();
+            // Đổi hình chuột 
+            this.Cursor = Cursors.Cross;
             gameOver = new GameOver(this)
             { Visibility = Visibility.Hidden };
-            gamePauseVM = new GamePauseViewModel(this);                                 
+            gamePauseVM = new GamePauseViewModel(this);
             GamePlayCanvas.Children.Add(gamePauseVM.gamePause);
             GamePlayCanvas.Children.Add(gameOver);
+            // chỉnh vị trí khung Pause và GameOver
             gamePauseVM.gamePause.Margin = new Thickness(WindowWidth / 3, WindowHeight / 3, 0, 0);
-            gameOver.Margin = new Thickness(WindowWidth/3,WindowHeight/3,0,0);
+            gameOver.Margin = new Thickness(WindowWidth / 3, WindowHeight / 3, 0, 0);
             Canvas.SetZIndex(gameOver, 100);
             Canvas.SetZIndex(gamePauseVM.gamePause, 100);
             players = new Player[5];
@@ -126,7 +129,7 @@ namespace AgerGame.Views
                 FoodCollisionPlayerAI();
                 PlayerCollisionAI();
 
-                if(BotAllDead())
+                if (BotAllDead())
                 {
                     CheckGameOver();
                 }
@@ -308,7 +311,7 @@ namespace AgerGame.Views
                     rnd = new Random();
                     r = new Random();
                     if (Ultil.Collision(PAIRect[i], foodsRect[j]))
-                    {                       
+                    {
                         foods[j].PosX = rnd.Next(10, (int)WindowWidth - 10);
                         foods[j].PosY = rnd.Next(10, (int)WindowHeight - 10);
                         foods[j].Img.Fill = new SolidColorBrush(Color.FromRgb((byte)r.Next(1, 255), (byte)r.Next(1, 255), (byte)r.Next(1, 233)));
@@ -353,7 +356,7 @@ namespace AgerGame.Views
             {
                 if (players[1].WidthAndHeight >= players[0].WidthAndHeight)
                 {
-                    CheckGameOver();                  
+                    CheckGameOver();
                 }
                 else
                 {

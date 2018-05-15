@@ -9,5 +9,9 @@
         Title="GamePlayWindow" Height="450" Width="800"
         WindowState="Maximized" WindowStyle="None">
     <Canvas x:Name="GamePlayCanvas">
+        <Canvas.Background>
+            <ImageBrush ImageSource="/Resource/Image/gameBg.jpg" 
+                        Stretch="UniformToFill" Opacity="0.3"/>
+        </Canvas.Background>
     </Canvas>
 </Window>
