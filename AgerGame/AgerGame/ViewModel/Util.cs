@@ -9,7 +9,7 @@ using AgerGame.Model;
 
 namespace AgerGame.ViewModel
 {
-    public static class Ultil
+    public static class Util
     {
         public static readonly double WindowWidth = SystemParameters.PrimaryScreenWidth;
         public static readonly double WindowHeight = SystemParameters.PrimaryScreenHeight;

@@ -33,8 +33,10 @@ namespace AgerGame.ViewModel
             };
             gameMenu.btnPlay.Click += (sender, e) =>
             {
-                gamePlayWindow = new GamePlayWindow(Ultil.CreatePlayer());
-                gamePlayWindow.t1 = DateTime.Now;
+                gamePlayWindow = new GamePlayWindow
+                {
+                    t1 = DateTime.Now
+                };
                 gamePlayWindow.ShowDialog();
             };
             gameMenu.btnMusic.Click += (sender, e) =>

@@ -59,7 +59,7 @@
     <Compile Include="Model\Player.cs" />
     <Compile Include="ViewModel\GameMenuViewModel.cs" />
     <Compile Include="ViewModel\GamePauseViewModel.cs" />
-    <Compile Include="ViewModel\Ultil.cs" />
+    <Compile Include="ViewModel\Util.cs" />
     <Compile Include="Views\GameMenu.xaml.cs">
       <DependentUpon>GameMenu.xaml</DependentUpon>
     </Compile>
